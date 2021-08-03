@@ -12,7 +12,13 @@ module.exports = {
         allowNull: false,
       },
       description: {
+        type: Sequelize.STRING,
+      },
+      text: {
         type: Sequelize.TEXT,
+      },
+      coverImageUrl: {
+        type: Sequelize.STRING,
       },
       createdBy: {
         type: Sequelize.STRING,
