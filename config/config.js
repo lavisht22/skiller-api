@@ -1,11 +1,26 @@
 module.exports = {
   development: {
-    url: 'postgres://lavisht22@localhost/lavisht22?ssl=true',
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
     dialect: 'postgres',
   },
-  test: { url: process.env.DATABASE_URL, dialect: 'postgres' },
-  production: {
-    url: `${process.env.DATABASE_URL}?ssl=true`,
+  test: {
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
     dialect: 'postgres',
+  },
+  production: {
+    url: process.env.DATABASE_URL,
+    dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
   },
 };
