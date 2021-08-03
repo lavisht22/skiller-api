@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+
+const { jwtCheck } = require('../utils/auth');
+
+const router = express.Router();
+
+router.use(jwtCheck);
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res, next) => {
+  res.status(200).json({ message: 'Welcome to Skiller API' });
 });
 
 module.exports = router;
