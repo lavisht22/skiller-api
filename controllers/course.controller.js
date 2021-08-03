@@ -44,7 +44,7 @@ async function getCourses() {
 
 async function getCourseDetails(id) {
   const schema = Joi.object().keys({
-    id: Joi.string().required(),
+    id: Joi.string().uuid().required(),
   });
 
   const result = schema.validate({

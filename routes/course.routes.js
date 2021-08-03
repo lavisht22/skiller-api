@@ -1,6 +1,7 @@
 const express = require('express');
 
 const courseController = require('../controllers/course.controller');
+const { jwtCheck } = require('../utils/auth');
 const { handleApiError } = require('../utils/error');
 
 const router = express.Router();
@@ -16,7 +17,7 @@ router.get('/', async (req, res, next) => {
 });
 
 /* Create new course */
-router.post('/', async (req, res) => {
+router.post('/', jwtCheck, async (req, res) => {
   try {
     const { name, description, text, coverImageUrl } = req.body;
 
@@ -46,7 +47,7 @@ router.get('/:id', async (req, res) => {
 });
 
 /* Update Course */
-router.put('/:id', async (req, res) => {
+router.put('/:id', jwtCheck, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, description, text, coverImageUrl, order } = req.body;
