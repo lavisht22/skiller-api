@@ -8,7 +8,7 @@ router.use(jwtCheck);
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.status(200).json({ message: 'Welcome to Skiller API' });
+  res.status(200).json({ message: 'Welcome to Skiller API', ...req.user });
 });
 
 module.exports = router;
